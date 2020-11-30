@@ -80,11 +80,11 @@ public class XuLyAnh
 		}
 	}
 	
-	public void Binary()  {
+	public void Binary(int nguong)  {
 		this.img = this.clone();
 		List<ThreadBinary> thread = new ArrayList<>();
 		for (int i = 0; i < width; i++) {
-			thread.add(new ThreadBinary(i, imgNative, img,125));
+			thread.add(new ThreadBinary(i, imgNative, img,nguong));
 			thread.get(thread.size() - 1).run();
 		}
 

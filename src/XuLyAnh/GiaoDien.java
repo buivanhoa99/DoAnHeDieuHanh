@@ -3,6 +3,7 @@ package XuLyAnh;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.Panel;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -10,6 +11,8 @@ import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 
@@ -62,11 +65,25 @@ public class GiaoDien extends JFrame{
     
     r3 = new JRadioButton("Negative convert");
     r3.setFont(f1);
-    r3.setBounds(100, 350, 400, 50);
+    r3.setBounds(100, 400, 400, 50);
     p1.add(r3);
     this.add(r3);
     
-   
+    JSlider js = new JSlider(0, 255, 100);
+    js.setBounds(100, 350, 200, 50);
+    //js.setLocation(new Point(100,500));
+    this.add(js);
+    
+   r2.addChangeListener(new ChangeListener() {
+	
+	@Override
+	public void stateChanged(ChangeEvent e) {
+		// TODO Auto-generated method stub
+		if (r2.isSelected()) {
+			
+		}
+	}
+});
     
     
     button1.addMouseListener(new MouseListener() {
@@ -86,7 +103,8 @@ public class GiaoDien extends JFrame{
 				 xla.Gray();
 			 }
 			 else if (i==2) {
-				 xla.Binary();
+				 System.out.println(js.getValue());
+				 xla.Binary(js.getValue());
 			 }
 			 else xla.Negative();
 			 
